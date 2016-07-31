@@ -1,3 +1,4 @@
+; this programm will be processed by custom 8086 64K (tiny) cross-assembler 
 .org 100h
 	nop
 	int	0x20

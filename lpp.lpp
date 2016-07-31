@@ -3,14 +3,15 @@
 %}
 %option noyywrap yylineno
 %%
-\.end				{yyterminate();}
-\.org				TOS(ORG)
-\.[a-z]+			TOS(DIR)
+\.end				{yyterminate();}	/* .end			*/
+;[^\n]*\n			{}					/* ; comment	*/
+\.org				TOS(ORG)			/* .org nnn		*/
+\.[a-z]+			TOS(DIR)			/* .directive	*/
 nop					TOS(NOP)
 int					TOS(INT)
 0x[0-9A-Fa-f]+		HEX(NUM)
 [0-9A-Fa-f]+h		HEX(NUM)
 [0-9]+				DEC(NUM)
 [a-zA-Z0-9_]+		TOS(SYM)
-[ \t\r\n]+			{}
+[ \t\r\n]+			{}					/* drop spaces	*/
 %%
