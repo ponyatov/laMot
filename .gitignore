@@ -1,0 +1,7 @@
+*~
+*.swp
+*.exe
+*.com
+*.log
+ypp.tab.?pp
+lex.yy.c
