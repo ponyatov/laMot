@@ -1,5 +1,5 @@
-com.com: src.src ./exe.exe
-	./exe.exe < $<
+com.com: src.src ./exe.exe Makefile dosbox.conf
+	./exe.exe < $< && D:/DOSBox/DOSBox -conf dosbox.conf
 #	 && $@
 C = cpp.cpp ypp.tab.cpp lex.yy.c
 H = hpp.hpp ypp.tab.hpp
