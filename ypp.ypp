@@ -1,0 +1,13 @@
+%{
+#include "hpp.hpp"
+%}
+%defines %union { string* s; long n; }
+%token <s> SYM DIR ORG
+%token <n> NUM
+%%
+REPL :
+	| REPL ORG NUM	{ org=$3; cerr << "org:"<<org << endl; }
+	| REPL SYM { cerr << "sym:"<<*$2 << endl; };
+	| REPL DIR { cerr << "dir:"<<*$2 << endl; };
+	| REPL NUM { cerr << "num:"<<$2 << endl; };
+%%

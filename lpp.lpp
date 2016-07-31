@@ -1,0 +1,10 @@
+%{
+#include "hpp.hpp"
+%}
+%option noyywrap yylineno
+%%
+\.org				TOS(ORG)
+\.[a-z]+			TOS(DIR)
+[0-9A-Fa-f]+h		HEX(NUM)
+[a-zA-Z0-9_]+		TOS(SYM)
+%%
