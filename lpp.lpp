@@ -3,8 +3,14 @@
 %}
 %option noyywrap yylineno
 %%
+\.end				{yyterminate();}
 \.org				TOS(ORG)
 \.[a-z]+			TOS(DIR)
+nop					TOS(NOP)
+int					TOS(INT)
+0x[0-9A-Fa-f]+		HEX(NUM)
 [0-9A-Fa-f]+h		HEX(NUM)
+[0-9]+				DEC(NUM)
 [a-zA-Z0-9_]+		TOS(SYM)
+[ \t\r\n]+			{}
 %%

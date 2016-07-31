@@ -1,5 +1,6 @@
 .org 100h
 	nop
-	int	20
+	int	0x20
 	int	0
+	int 3
 .end

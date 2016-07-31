@@ -3,10 +3,13 @@
 %}
 %defines %union { string* s; long n; }
 %token <s> SYM DIR ORG
+%token <s> NOP INT
 %token <n> NUM
 %%
 REPL :
-	| REPL ORG NUM	{ org=$3; cerr << "org:"<<org << endl; }
+	| REPL ORG NUM	{ org=$3; }
+	| REPL NOP		{ M[I++]=0x90; org+=1; }
+	| REPL INT NUM	{ M[I++]=0xCD; M[I++]=$3; org+=2; }
 	| REPL SYM { cerr << "sym:"<<*$2 << endl; };
 	| REPL DIR { cerr << "dir:"<<*$2 << endl; };
 	| REPL NUM { cerr << "num:"<<$2 << endl; };
